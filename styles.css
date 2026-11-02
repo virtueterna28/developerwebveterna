@@ -1,0 +1,637 @@
+/* --- Reset & Variables --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    scroll-behavior: smooth;
+}
+
+:root {
+    --primary-blue: #101b4a;
+    --accent-blue: #d5a72e;
+    --light-blue: #f7e9b2;
+    --dark-color: #172044;
+    --gray-color: #4e5874;
+    --light-bg: #101b4a;
+    --white: #fff8e5;
+    --gold: #f4c84a;
+    --shadow: 0 12px 32px rgba(4, 10, 35, 0.3);
+    --transition: all 0.3s ease;
+}
+
+body {
+    background: linear-gradient(135deg, #0b1235 0%, #17265f 48%, #7a5a13 100%);
+    background-attachment: fixed;
+    color: #fff8e5;
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* Interactive royal theme: the crown is enabled by default. */
+body:has(#royal-mode:not(:checked)) {
+    background: #f8fafc;
+    color: #1e293b;
+}
+
+.royal-toggle {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    opacity: 0;
+}
+
+.crown-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    flex-shrink: 0;
+    padding: 10px 14px;
+    border: 1px solid #f4c84a;
+    border-radius: 999px;
+    background: linear-gradient(135deg, #f4c84a, #c68b16);
+    color: #101b4a;
+    font-size: 0.85rem;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 4px 14px rgba(244, 200, 74, 0.28);
+    transition: var(--transition);
+}
+
+.crown-toggle:hover {
+    transform: translateY(-2px) scale(1.03);
+    box-shadow: 0 7px 20px rgba(244, 200, 74, 0.45);
+}
+
+.royal-toggle:focus-visible + .crown-toggle {
+    outline: 3px solid #fff8e5;
+    outline-offset: 3px;
+}
+
+body:has(#royal-mode:not(:checked)) .crown-toggle {
+    background: #fff;
+    color: #233686;
+    border-color: #cbd5e1;
+}
+
+body:has(#royal-mode:not(:checked)) {
+    --primary-blue: #233686;
+    --accent-blue: #3b52b3;
+    --light-blue: #eef2ff;
+    --dark-color: #1e293b;
+    --gray-color: #64748b;
+    --light-bg: #f8fafc;
+    --white: #ffffff;
+    --gold: #f4c84a;
+    --shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+body:has(#royal-mode:checked) section {
+    position: relative;
+}
+
+body:has(#royal-mode:checked) .section-title h2,
+body:has(#royal-mode:checked) .logo-text,
+body:has(#royal-mode:checked) .koordinator-name,
+body:has(#royal-mode:checked) .biodata-table td.label,
+body:has(#royal-mode:checked) .org-card h3,
+body:has(#royal-mode:checked) .skill-box h4 {
+    color: #f4c84a;
+}
+
+body:has(#royal-mode:checked) .section-title h2::before {
+    content: '\f521';
+    display: block;
+    margin-bottom: 8px;
+    color: #f4c84a;
+    font-family: 'Font Awesome 6 Free';
+    font-weight: 900;
+    font-size: 1.2rem;
+}
+
+body:has(#royal-mode:checked) .section-title h2::after {
+    background: linear-gradient(90deg, #f4c84a, #fff0a6);
+}
+
+body:has(#royal-mode:checked) nav a:hover {
+    color: #f4c84a;
+}
+
+body:has(#royal-mode:checked) .sambutan-text,
+body:has(#royal-mode:checked) .org-card p,
+body:has(#royal-mode:checked) .skill-box p,
+body:has(#royal-mode:checked) .prestasi-item p {
+    color: #f4edcf;
+}
+
+body:has(#royal-mode:checked) .sambutan-container,
+body:has(#royal-mode:checked) .biodata-grid,
+body:has(#royal-mode:checked) .deskripsi-card,
+body:has(#royal-mode:checked) .org-card,
+body:has(#royal-mode:checked) .skills-wrapper,
+body:has(#royal-mode:checked) .prestasi-item {
+    background: linear-gradient(145deg, rgba(22, 35, 83, 0.96), rgba(35, 49, 104, 0.96));
+    color: #fff8e5;
+    border: 1px solid rgba(244, 200, 74, 0.45);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.28), inset 0 1px rgba(255, 240, 166, 0.08);
+}
+
+body:has(#royal-mode:checked) .sambutan-text,
+body:has(#royal-mode:checked) .motto-box {
+    background: linear-gradient(135deg, #26386f, #594918);
+    color: #fff5cf;
+    border-color: #f4c84a;
+}
+
+body:has(#royal-mode:checked) .biodata-table tr {
+    border-color: rgba(244, 200, 74, 0.25);
+}
+
+body:has(#royal-mode:checked) .org-card {
+    border-top: 4px solid #f4c84a;
+}
+
+body:has(#royal-mode:checked) .prestasi-item {
+    border-left: 5px solid #f4c84a;
+}
+
+body:has(#royal-mode:checked) .prestasi-icon {
+    background: linear-gradient(135deg, #f4c84a, #d49b22);
+    color: #101b4a;
+}
+
+body:has(#royal-mode:checked) .btn {
+    background: linear-gradient(135deg, #f4c84a, #bd8718);
+    color: #101b4a;
+}
+
+body:has(#royal-mode:checked) footer {
+    border-top: 2px solid #f4c84a;
+    background: linear-gradient(110deg, #0b1235, #25366d, #765711);
+}
+
+/* --- Header & Navigation --- */
+header {
+    background-color: var(--primary-blue);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    padding: 12px 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.logo-container img {
+    height: 48px;
+    width: auto;
+    object-fit: contain;
+}
+
+.logo-text {
+    color: var(--white);
+    font-weight: 700;
+    font-size: 1.2rem;
+    letter-spacing: 0.5px;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    gap: 25px;
+}
+
+nav a {
+    color: rgba(255, 255, 255, 0.9);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.95rem;
+    transition: var(--transition);
+}
+
+nav a:hover {
+    color: #93c5fd;
+}
+
+/* --- Hero Slider --- */
+.hero-slider {
+    margin-top: 72px;
+    position: relative;
+    width: 100%;
+    height: 80vh;
+    min-height: 450px;
+    overflow: hidden;
+}
+
+.slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+    background-size: cover;
+    background-position: center;
+}
+
+.slide.active {
+    opacity: 1;
+}
+
+.slide-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(35, 54, 134, 0.4), rgba(15, 23, 42, 0.7));
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: var(--white);
+    padding: 0 20px;
+}
+
+.slide-overlay h1 {
+    font-size: 2.8rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+    text-shadow: 2px 2px 8px rgba(0,0,0,0.5);
+    animation: fadeInDown 1s ease;
+}
+
+.slide-overlay p {
+    font-size: 1.2rem;
+    max-width: 600px;
+    text-shadow: 1px 1px 4px rgba(0,0,0,0.5);
+    animation: fadeInUp 1s ease;
+}
+
+/* Navigasi Slider Controls */
+.slider-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.2);
+    color: var(--white);
+    border: none;
+    padding: 15px 18px;
+    cursor: pointer;
+    border-radius: 50%;
+    font-size: 1.2rem;
+    backdrop-filter: blur(5px);
+    transition: var(--transition);
+    z-index: 10;
+}
+
+.slider-btn:hover {
+    background: var(--primary-blue);
+}
+
+.prev-btn { left: 20px; }
+.next-btn { right: 20px; }
+
+/* --- Global Section Style --- */
+section {
+    padding: 80px 8%;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.section-title h2 {
+    font-size: 2.2rem;
+    color: var(--primary-blue);
+    position: relative;
+    display: inline-block;
+    padding-bottom: 10px;
+}
+
+.section-title h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 4px;
+    background-color: var(--accent-blue);
+    border-radius: 2px;
+}
+
+/* --- Buttons --- */
+.btn {
+    display: inline-block;
+    padding: 12px 28px;
+    background-color: var(--primary-blue);
+    color: var(--white);
+    text-decoration: none;
+    border-radius: 30px;
+    font-weight: 600;
+    box-shadow: 0 4px 15px rgba(35, 54, 134, 0.3);
+    transition: var(--transition);
+    border: none;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background-color: var(--accent-blue);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(35, 54, 134, 0.4);
+}
+
+/* --- 1. Sambutan Koordinator --- */
+.sambutan-container {
+    background: var(--white);
+    border-radius: 20px;
+    padding: 40px;
+    box-shadow: var(--shadow);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.koordinator-profile {
+    margin-bottom: 25px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.img-square-11 {
+    width: 180px;
+    height: 180px;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    border: 4px solid var(--light-blue);
+    margin-bottom: 15px;
+}
+
+.koordinator-name {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--primary-blue);
+}
+
+.sambutan-text {
+    text-align: justify;
+    color: var(--gray-color);
+    font-size: 1rem;
+    line-height: 1.8;
+    margin-bottom: 30px;
+    background: var(--light-bg);
+    padding: 25px;
+    border-radius: 12px;
+    border-left: 5px solid var(--primary-blue);
+}
+
+.instagram-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: #e1306c;
+    font-weight: 600;
+    text-decoration: none;
+    margin-top: 15px;
+    transition: var(--transition);
+}
+
+.instagram-link:hover {
+    transform: scale(1.05);
+}
+
+/* --- 2. Biodata Section --- */
+.biodata-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 40px;
+    align-items: start;
+    background: var(--white);
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: var(--shadow);
+}
+
+.biodata-left {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.biodata-img {
+    width: 100%;
+    max-width: 320px;
+    border-radius: 15px;
+    box-shadow: var(--shadow);
+    margin-bottom: 20px;
+    object-fit: cover;
+}
+
+.motto-box {
+    background: var(--light-blue);
+    border-radius: 12px;
+    padding: 15px 20px;
+    color: var(--primary-blue);
+    font-style: italic;
+    font-weight: 600;
+    width: 100%;
+    box-shadow: inset 0 0 10px rgba(0,0,0,0.03);
+}
+
+.biodata-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.biodata-table tr {
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.biodata-table tr:last-child {
+    border-bottom: none;
+}
+
+.biodata-table td {
+    padding: 12px 10px;
+    vertical-align: top;
+}
+
+.biodata-table td.label {
+    font-weight: 600;
+    color: var(--primary-blue);
+    width: 35%;
+}
+
+/* --- 3. Deskripsi Diri --- */
+.deskripsi-card {
+    background: var(--white);
+    padding: 35px;
+    border-radius: 20px;
+    box-shadow: var(--shadow);
+    font-size: 1.05rem;
+    line-height: 1.8;
+    color: var(--dark-color);
+    position: relative;
+}
+
+.deskripsi-card::before {
+    content: '\f10d';
+    font-family: 'Font Awesome 6 Free';
+    font-weight: 900;
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    font-size: 3rem;
+    color: var(--light-blue);
+    z-index: 0;
+}
+
+.deskripsi-content {
+    position: relative;
+    z-index: 1;
+}
+
+/* --- 4. Riwayat Organisasi --- */
+.org-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+}
+
+.org-card {
+    background: var(--white);
+    padding: 30px;
+    border-radius: 16px;
+    box-shadow: var(--shadow);
+    border-top: 4px solid var(--primary-blue);
+    transition: var(--transition);
+}
+
+.org-card:hover {
+    transform: translateY(-5px);
+}
+
+.org-card h3 {
+    color: var(--primary-blue);
+    margin-bottom: 10px;
+    font-size: 1.2rem;
+}
+
+.org-card p {
+    color: var(--gray-color);
+    font-weight: 500;
+}
+
+/* --- 5. Keahlian & Kualifikasi --- */
+.skills-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 40px;
+    background: var(--white);
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: var(--shadow);
+    align-items: center;
+}
+
+.skills-info {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.skill-box h4 {
+    color: var(--primary-blue);
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.skills-right-img {
+    text-align: center;
+}
+
+/* --- 6. Prestasi --- */
+.prestasi-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.prestasi-item {
+    background: var(--white);
+    padding: 20px 25px;
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    border-left: 5px solid #f59e0b;
+    transition: var(--transition);
+}
+
+.prestasi-item:hover {
+    transform: translateX(10px);
+}
+
+.prestasi-icon {
+    background: #fef3c7;
+    color: #d97706;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    flex-shrink: 0;
+}
+
+/* --- Footer --- */
+footer {
+    background-color: var(--primary-blue);
+    color: var(--white);
+    text-align: center;
+    padding: 30px;
+    margin-top: 50px;
+}
+
+/* --- Animations --- */
+@keyframes fadeInDown {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* --- Responsive Design --- */
+@media (max-width: 902px) {
+    .biodata-grid, .skills-wrapper {
+        grid-template-columns: 1fr;
+    }
+    nav ul {
+        display: none; /* Dapat dikembangkan dengan menu toggle Hamburger */
+    }
+}
